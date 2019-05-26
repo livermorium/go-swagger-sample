@@ -11,7 +11,8 @@ import (
 	"o/samples/swagger-sample/gen/models"
 )
 
-func ConfigureAPI(api *operations.GreetingsAPI)  {
+func Handle(api *operations.GreetingsAPI)  {
+	
 	api.GreetingsGetHelloHandler = greetings.GetHelloHandlerFunc(func(params greetings.GetHelloParams) middleware.Responder {
 		name := swag.StringValue(params.Name)
 		if name == "" {
@@ -20,4 +21,4 @@ func ConfigureAPI(api *operations.GreetingsAPI)  {
 
 		greeting := models.Greetings(fmt.Sprintf("Hello, %s!", name))
 		return greetings.NewGetHelloOK().WithPayload(greeting)})
-}	
+}

@@ -45,7 +45,7 @@ func main() {
 		os.Exit(code)
 	}
 
-	services.ConfigureAPI(api)
+	services.Handle(api)
 
 	server.ConfigureAPI()
 
