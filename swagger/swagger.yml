@@ -1,0 +1,40 @@
+---
+
+swagger: '2.0'
+
+info:
+  version: 1.0.0
+  title: Greeting Server
+
+basePath: "/v1"
+
+tags:
+- name: "greetings"
+  description: "says greetings"
+
+paths:
+  /hello:
+    get:
+      tags:
+        - greetings
+      produces:
+        - text/plain
+
+      parameters:
+        - name: name
+          required: false
+          type: string
+          in: query
+          description: defaults to World if not given
+      operationId: getGreeting
+
+      responses:
+        200:
+          description: returns a greeting
+          schema:
+              $ref: "#/definitions/greetings"
+
+definitions:
+  greetings:
+    type: string
+    description: contains the actual greeting as plain text
