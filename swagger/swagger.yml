@@ -26,7 +26,6 @@ paths:
           type: string
           in: query
           description: defaults to World if not given
-      operationId: getGreeting
 
       responses:
         200:

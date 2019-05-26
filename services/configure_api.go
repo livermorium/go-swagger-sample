@@ -12,12 +12,12 @@ import (
 )
 
 func ConfigureAPI(api *operations.GreetingsAPI)  {
-	api.GreetingsGetGreetingHandler = greetings.GetGreetingHandlerFunc(func(params greetings.GetGreetingParams) middleware.Responder {
+	api.GreetingsGetHelloHandler = greetings.GetHelloHandlerFunc(func(params greetings.GetHelloParams) middleware.Responder {
 		name := swag.StringValue(params.Name)
 		if name == "" {
 			name = "World"
 		}
 
 		greeting := models.Greetings(fmt.Sprintf("Hello, %s!", name))
-		return greetings.NewGetGreetingOK().WithPayload(greeting)})
-}
+		return greetings.NewGetHelloOK().WithPayload(greeting)})
+}	
